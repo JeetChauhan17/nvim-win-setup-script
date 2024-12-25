@@ -4,30 +4,15 @@ $JetBrainsMonoDir = "$HOME\Downloads\JetBrainsMono.zip"
 $JetBrainsMonoExtractDir = "$HOME\Downloads\JetBrainsMono"
 $GCCURL = "https://github.com/brechtsanders/winlibs_mingw/releases/download/15.0.0-snapshot20240616posix-12.0.0-ucrt-r1/winlibs-i686-posix-dwarf-gcc-15.0.0-snapshot20240616-mingw-w64ucrt-12.0.0-r1.zip"
 $PythonInstallerURL = "https://www.python.org/ftp/python/3.12.0/python-3.12.0-amd64.exe"
-$GitInstallerURL = "https://github.com/git-for-windows/git/releases/download/v2.42.0.windows.1/Git-2.42.0-64-bit.exe"
+
 $PNPMInstaller = "https://get.pnpm.io/install.ps1"
 $YarnInstaller = "https://classic.yarnpkg.com/latest.msi"
-$NodeInstallerURL = "https://nodejs.org/dist/v20.8.1/node-v20.8.1-x64.msi"
+
 $NVChadRepo = "https://github.com/parv141206/nvchad-config.git"
 $NVChadDir = "$HOME\AppData\Local\nvim"
 
-try {
-    # Install Git
-    Write-Host "Downloading Git..."
-    Invoke-WebRequest -Uri $GitInstallerURL -OutFile "$HOME\Downloads\git.exe"
-    Write-Host "Installing Git..."
-    Start-Process "$HOME\Downloads\git.exe" -ArgumentList "/SILENT" -Wait
-} catch {
-    Write-Host "Failed to install Git: $_"
-}
 
-try {
-    # Install Microsoft Terminal using Winget
-    Write-Host "Installing Microsoft Terminal..."
-    Start-Process "winget" -ArgumentList "install --id=Microsoft.WindowsTerminal -e --source=winget" -Wait
-} catch {
-    Write-Host "Failed to install Microsoft Terminal: $_"
-}
+
 
 try {
     # Download and Install JetBrains Mono Nerd Font
@@ -60,15 +45,7 @@ try {
     Write-Host "Failed to install Python: $_"
 }
 
-try {
-    # Install Node.js
-    Write-Host "Downloading Node.js..."
-    Invoke-WebRequest -Uri $NodeInstallerURL -OutFile "$HOME\Downloads\node.msi"
-    Write-Host "Installing Node.js..."
-    Start-Process "$HOME\Downloads\node.msi" -ArgumentList "/quiet" -Wait
-} catch {
-    Write-Host "Failed to install Node.js: $_"
-}
+
 
 try {
     # Install PNPM
