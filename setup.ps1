@@ -2,8 +2,11 @@
 $JetBrainsMonoURL = "https://github.com/ryanoasis/nerd-fonts/releases/latest/download/JetBrainsMono.zip"
 $JetBrainsMonoDir = "$HOME\Downloads\JetBrainsMono.zip"
 $JetBrainsMonoExtractDir = "$HOME\Downloads\JetBrainsMono"
-$GCCURL = "https://github.com/brechtsanders/winlibs_mingw/releases/download/15.0.0-snapshot20240616posix-12.0.0-ucrt-r1/winlibs-i686-posix-dwarf-gcc-15.0.0-snapshot20240616-mingw-w64ucrt-12.0.0-r1.zip"
+# $GCCURL = "https://github.com/brechtsanders/winlibs_mingw/releases/download/15.0.0-snapshot20240616posix-12.0.0-ucrt-r1/winlibs-i686-posix-dwarf-gcc-15.0.0-snapshot20240616-mingw-w64ucrt-12.0.0-r1.zip"
 $PythonInstallerURL = "https://www.python.org/ftp/python/3.12.0/python-3.12.0-amd64.exe"
+
+$W64DevkitURL = "https://github.com/skeeto/w64devkit/releases/download/v2.0.0/w64devkit-x64-2.0.0.exe"
+$W64DevkitDir = "$HOME\w64devkit"
 
 $PNPMInstaller = "https://get.pnpm.io/install.ps1"
 $YarnInstaller = "https://classic.yarnpkg.com/latest.msi"
@@ -25,15 +28,25 @@ try {
     Write-Host "Failed to install JetBrains Mono Nerd Font: $_"
 }
 
-try {
-    # Install GCC
-    Write-Host "Downloading GCC..."
-    Invoke-WebRequest -Uri $GCCURL -OutFile "$HOME\Downloads\gcc.zip"
-    Write-Host "Extracting GCC..."
-    Expand-Archive -Path "$HOME\Downloads\gcc.zip" -DestinationPath "$HOME\gcc" -Force
-} catch {
-    Write-Host "Failed to install GCC: $_"
-}
+# try {
+#     # Install GCC
+#     Write-Host "Downloading GCC..."
+#     Invoke-WebRequest -Uri $GCCURL -OutFile "$HOME\Downloads\gcc.zip"
+#     Write-Host "Extracting GCC..."
+#     Expand-Archive -Path "$HOME\Downloads\gcc.zip" -DestinationPath "$HOME\gcc" -Force
+# } catch {
+#     Write-Host "Failed to install GCC: $_"
+# }
+
+# Download and Set Up w64devkit
+Write-Host "Downloading w64devkit..."
+Invoke-WebRequest -Uri $W64DevkitURL -OutFile "$HOME\Downloads\w64devkit.exe"
+Write-Host "Extracting w64devkit..."
+Start-Process "$HOME\Downloads\w64devkit.exe" -ArgumentList "/SILENT", "/DIR=$W64DevkitDir" -Wait
+Write-Host "Adding w64devkit to PATH..."
+[System.Environment]::SetEnvironmentVariable("PATH", "$W64DevkitDir;$Env:PATH", [System.EnvironmentVariableTarget]::Machine)
+
+
 
 try {
     # Install Python
