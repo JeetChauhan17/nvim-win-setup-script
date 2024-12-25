@@ -8,7 +8,7 @@ $PythonInstallerURL = "https://www.python.org/ftp/python/3.12.0/python-3.12.0-am
 $PNPMInstaller = "https://get.pnpm.io/install.ps1"
 $YarnInstaller = "https://classic.yarnpkg.com/latest.msi"
 
-$NVChadRepo = "https://github.com/parv141206/nvchad-config.git"
+$NVChadRepo = "https://github.com/JeetChauhan17/nvim-conf-win"
 $NVChadDir = "$HOME\AppData\Local\nvim"
 
 
