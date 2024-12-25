@@ -27,6 +27,10 @@ iwr -useb https://christitus.com/win | iex
 Link : https://github.com/ryanoasis/nerd-fonts/releases/download/v3.3.0/JetBrainsMono.zip
 How to install : extract zip, select all files with (.ttf) extention, right-click and `Install`
 
+## Setup MinGW for GCC 
+Link : https://sourceforge.net/projects/mingw/files/latest/download
+How to Install : Run once installed and select G++, Base, and other tools that you may like, then goto top-left and hit `apply changes` an install.
+
 ## After that : 
 - run powershell as admin and then run : 
 ```ps1
