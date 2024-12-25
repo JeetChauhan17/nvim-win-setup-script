@@ -14,4 +14,5 @@ Set-ExecutionPolicy Bypass -Scope Process -Force
  3. PNPM
  4. Yarn
  5. python
- 6. nvim-config (neovim now included, install seperately)
+ 6. NodeJS
+ 7. nvim-config (neovim now included, install seperately)
